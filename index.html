@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Arizmendi Wan | Personal Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Personal website of Arizmendi Wan – research, projects, and experience."
+  />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-alt: #121729;
+      --card: #181d33;
+      --accent: #f97316;
+      --accent-soft: rgba(249, 115, 22, 0.1);
+      --text: #f9fafb;
+      --text-muted: #9ca3af;
+      --border: #1f2937;
+      --max-width: 960px;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(2, 6, 23, 0.9),
+        rgba(2, 6, 23, 0.6)
+      );
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+    }
+
+    .brand {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      padding: 0.35rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+
+    nav a:hover {
+      border-color: var(--accent-soft);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    main {
+      padding: 2.5rem 0 3.5rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    .section-header {
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .section-tagline {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Hero */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 3vw, 2.8rem);
+      font-weight: 650;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.02rem;
+      color: var(--text-muted);
+      max-width: 34rem;
+    }
+
+    .hero-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid var(--accent-soft);
+      background: rgba(15, 23, 42, 0.8);
+      font-size: 0.8rem;
+      margin-bottom: 0.8rem;
+      color: var(--accent);
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1.4rem;
+    }
+
+    .pill {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .pill.primary {
+      border-color: var(--accent);
+      background: linear-gradient(
+        135deg,
+        var(--accent-soft),
+        rgba(15, 23, 42, 0.95)
+      );
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .pill small {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    .hero-card {
+      border-radius: var(--radius);
+      background: radial-gradient(circle at top, #1f2937, #020617);
+      border: 1px solid var(--border);
+      padding: 1.3rem 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .hero-card-title {
+      font-size: 0.95rem;
+      font-weight: 550;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.7rem;
+    }
+
+    .chip {
+      font-size: 0.75rem;
+      padding: 0.16rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    /* Cards and lists */
+
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .card {
+      border-radius: var(--radius);
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--border);
+      padding: 1rem 1rem;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-title {
+      font-weight: 550;
+      font-size: 0.98rem;
+    }
+
+    .card-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.4rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.12rem 0.45rem;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--text-muted);
+    }
+
+    .card-description {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+
+    /* Experience */
+
+    .timeline {
+      border-left: 1px solid var(--border);
+      padding-left: 1.1rem;
+      margin-top: 0.5rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -1.3rem;
+      top: 0.15rem;
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-soft);
+    }
+
+    .timeline-role {
+      font-size: 0.95rem;
+      font-weight: 550;
+    }
+
+    .timeline-org {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .timeline-time {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.1rem;
+    }
+
+    .timeline-body {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* Contact */
+
+    .contact-box {
+      border-radius: var(--radius);
+      border: 1px dashed var(--border);
+      background: rgba(15, 23, 42, 0.8);
+      padding: 1rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.6rem;
+    }
+
+    .contact-item {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.25rem 0 2rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .nav-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-bar">
+        <div class="brand">Arizmendi Wan</div>
+        <nav>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section aria-label="Intro" class="hero">
+      <div>
+        <div class="hero-highlight">
+          <span>Machine Learning · Generative Models · AI Security</span>
+        </div>
+        <h1 class="hero-title">Arizmendi Wan</h1>
+        <p class="hero-subtitle">
+          I build and study generative models, with a focus on multimodal systems,
+          security, and how technology intersects with power, care, and everyday life.
+        </p>
+        <div class="hero-links">
+          <a class="pill primary" href="mailto:your_email@example.com">
+            <span>Contact me</span>
+          </a>
+          <a class="pill" href="cv.pdf" target="_blank" rel="noreferrer">
+            <span>CV</span>
+          </a>
+          <a class="pill" href="https://github.com/your-github" target="_blank" rel="noreferrer">
+            <span>GitHub</span>
+          </a>
+          <a class="pill" href="https://scholar.google.com/" target="_blank" rel="noreferrer">
+            <span>Google Scholar</span>
+          </a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <div class="hero-card-title">Current focus</div>
+        <p>
+          Multimodal generative models, secure and watermarked generation,
+          and interfaces that make AI more accountable and more useful to people
+          outside tech.
+        </p>
+        <div class="hero-chip-row">
+          <span class="chip">Diffusion & VAEs</span>
+          <span class="chip">Video generation</span>
+          <span class="chip">Graph generation</span>
+          <span class="chip">AI security & watermarking</span>
+        </div>
+      </aside>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="section-header">
+        <h2 class="section-title">About</h2>
+        <p class="section-tagline">A quick snapshot of who I am and what I care about.</p>
+      </div>
+      <p>
+        I am a researcher and engineer working at the intersection of
+        <strong>generative models</strong>, <strong>AI security</strong>, and
+        <strong>critical perspectives on technology</strong>.
+        My background is in physics and computer engineering, and my work spans
+        video generation, graph-based models, and watermarking for generative systems.
+      </p>
+      <br />
+      <p>
+        Beyond technical work, I am involved in queer and feminist organising and
+        translation projects, thinking about how AI can support more equal,
+        livable futures rather than just more efficient markets.
+      </p>
+    </section>
+
+    <!-- Research -->
+    <section id="research">
+      <div class="section-header">
+        <h2 class="section-title">Research</h2>
+        <p class="section-tagline">Selected papers and manuscripts.</p>
+      </div>
+
+      <div class="card-list">
+        <!-- Research item 1 -->
+        <article class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">
+                <a href="#paper-link-1" target="_blank" rel="noreferrer">
+                  UniPaint: A Unified Framework for Video Inpainting, Outpainting,
+                  and Interpolation
+                </a>
+              </div>
+              <div class="card-meta">Preprint · 2024 · First author</div>
+            </div>
+          </div>
+          <p class="card-description">
+            A mixture-of-experts video diffusion model that handles multiple
+            video editing tasks in a single unified architecture, with improved
+            data curation and distributed training for web video at scale.
+          </p>
+          <div class="card-tags">
+            <span class="tag">Diffusion</span>
+            <span class="tag">Video generation</span>
+            <span class="tag">Mixture of Experts</span>
+          </div>
+        </article>
+
+        <!-- Research item 2 -->
+        <article class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">
+                <a href="#paper-link-2" target="_blank" rel="noreferrer">
+                  Generative Semantic Watermarking for Large Language Models
+                </a>
+              </div>
+              <div class="card-meta">Work in progress · 2024</div>
+            </div>
+          </div>
+          <p class="card-description">
+            Exploring robust watermarking techniques for text generation,
+            focusing on discrete structures and alignment between semantic
+            meaning and watermark signals.
+          </p>
+          <div class="card-tags">
+            <span class="tag">Watermarking</span>
+            <span class="tag">LLMs</span>
+            <span class="tag">Security</span>
+          </div>
+        </article>
+
+        <!-- Add more papers as needed -->
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="section-header">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-tagline">A few things I’ve built or led.</p>
+      </div>
+
+      <div class="card-list">
+        <!-- Project 1 -->
+        <article class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">
+                <a href="#project-link-1" target="_blank" rel="noreferrer">
+                  ActiveCMR: 3D Cardiac MRI Reconstruction with Active Acquisition
+                </a>
+              </div>
+              <div class="card-meta">2024 · Research project</div>
+            </div>
+          </div>
+          <p class="card-description">
+            A conditional 3D generative model that reconstructs full cardiac
+            volumes from limited scans, with uncertainty estimation to guide
+            which slices to acquire next.
+          </p>
+          <div class="card-tags">
+            <span class="tag">Medical imaging</span>
+            <span class="tag">Active learning</span>
+            <span class="tag">Uncertainty</span>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">
+                <a href="#project-link-2" target="_blank" rel="noreferrer">
+                  Graph Watermarking for Generative Models
+                </a>
+              </div>
+              <div class="card-meta">2024 · Research project</div>
+            </div>
+          </div>
+          <p class="card-description">
+            Investigating how to embed robust watermarks into generated graphs
+            (such as molecular structures), focusing on the challenges of
+            discrete combinatorial spaces.
+          </p>
+          <div class="card-tags">
+            <span class="tag">Graph generation</span>
+            <span class="tag">Molecules</span>
+            <span class="tag">Security</span>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">
+                <a href="#project-link-3" target="_blank" rel="noreferrer">
+                  Gaze & Expression-based Cursor Control
+                </a>
+              </div>
+              <div class="card-meta">2025 · Prototype</div>
+            </div>
+          </div>
+          <p class="card-description">
+            A real-time interface that uses gaze and facial expressions to
+            control the cursor and trigger actions, combining computer vision,
+            calibration routines, and lightweight ML models.
+          </p>
+          <div class="card-tags">
+            <span class="tag">Human-computer interaction</span>
+            <span class="tag">Computer vision</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <div class="section-header">
+        <h2 class="section-title">Experience</h2>
+        <p class="section-tagline">Research, work, and organising.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-role">Researcher, Generative Models</div>
+          <div class="timeline-org">NLP / Vision Labs · Various</div>
+          <div class="timeline-time">2023 – Present</div>
+          <p class="timeline-body">
+            Working on multimodal generative models (video, graphs, medical
+            imaging) and AI security, collaborating with interdisciplinary teams
+            across institutions.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-role">Queer & Feminist Organiser / Translator</div>
+          <div class="timeline-org">Community collectives</div>
+          <div class="timeline-time">Ongoing</div>
+          <p class="timeline-body">
+            Leading and participating in grassroots organising, running
+            reading groups, and translating critical theory and movement texts
+            to make them accessible to broader audiences.
+          </p>
+        </div>
+
+        <!-- Add more roles as needed -->
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="section-header">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-tagline">Let’s talk about research, collaborations, or ideas.</p>
+      </div>
+
+      <div class="contact-box">
+        <p>
+          The best way to reach me is via email. I am happy to talk about
+          research, collaboration, talks, and community projects at the
+          intersection of AI and social justice.
+        </p>
+        <div class="contact-row">
+          <div class="contact-item">
+            <strong>Email:</strong>
+            <a href="mailto:your_email@example.com">your_email@example.com</a>
+          </div>
+          <div class="contact-item">
+            <strong>GitHub:</strong>
+            <a href="https://github.com/your-github" target="_blank" rel="noreferrer">
+              github.com/your-github
+            </a>
+          </div>
+          <div class="contact-item">
+            <strong>Scholar:</strong>
+            <a href="https://scholar.google.com/" target="_blank" rel="noreferrer">
+              Google Scholar profile
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Arizmendi Wan. All rights reserved.
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
